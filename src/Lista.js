@@ -14,34 +14,41 @@ const styles = theme => ({
   root: {
     width: '100%',
     maxWidth: 360,
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.background.paper
   },
+  fondo: {
+    background: 'red',
+    color: 'white'
+  }
 });
 
 function SimpleList(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
-      <List component="nav" subheader={<ListSubheader>Settings</ListSubheader>}>
-        <ListItem button>
+      <List
+        component="nav"
+        subheader={
+          <ListSubheader className={classes.fondo}>Settings</ListSubheader>
+        }
+      >
+        <Divider />
+        <ListItem button divider={true}>
           <ListItemIcon>
             <InboxIcon />
           </ListItemIcon>
-          <ListItemText primary="Inbox" />
+          <ListItemText primary="Inbox" secondary='otro'/>
         </ListItem>
-        <ListItem button>
+        <ListItem button divider={true}>
           <ListItemIcon>
             <DraftsIcon />
           </ListItemIcon>
           <ListItemText primary="Drafts" />
         </ListItem>
-      </List>
-      <Divider />
-      <List component="nav">
-        <ListItem button>
-          <ListItemText primary="Trash" />
+        <ListItem button divider={true}>
+          <ListItemText primary="Trash" secondary='otro' />
         </ListItem>
-        <ListItem button component="a" href="#simple-list">
+        <ListItem button divider={true} component="a" href="#simple-list">
           <ListItemText primary="Spam" />
         </ListItem>
       </List>
@@ -50,7 +57,7 @@ function SimpleList(props) {
 }
 
 SimpleList.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(SimpleList);
