@@ -6,6 +6,11 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import utils from '../../utils/parametros';
+import IconButton from '@material-ui/core/IconButton';
+import EditIcon from '@material-ui/icons/Edit';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import Button from '@material-ui/core/Button';
+import AddIcon from '@material-ui/icons/Add';
 
 const styles = theme => ({
   root: {
@@ -16,7 +21,7 @@ const styles = theme => ({
     background: utils.headerBackgroundColor,
     color: utils.headerFontColor,
     textAlign: 'center',
-    fontSize: '1.7rem'
+    fontSize: utils.listHeaderFontSize
   },
   lista: {
     borderRight: utils.listBorderRight,
@@ -24,6 +29,9 @@ const styles = theme => ({
   },
   seleccionado: {
     background: utils.listaItemSeleccionadoBackground
+  },
+  button: {
+    margin: theme.spacing.unit
   }
 });
 
@@ -36,7 +44,17 @@ const Lista = props => {
         component="nav"
         subheader={
           <ListSubheader disableSticky={false} className={classes.fondo}>
-            Lista
+            {props.titulo}
+            <Button
+            mini
+              variant="fab"
+              color="primary"
+              aria-label="add"
+              className={classes.button}
+              onClick={() => console.log('agregar')}
+            >
+              <AddIcon />
+            </Button>
           </ListSubheader>
         }
       >
@@ -46,14 +64,17 @@ const Lista = props => {
             divider={true}
             key={key}
             onClick={() => props.click(key)}
-            className={
-              props.seleccionado === key ? classes.seleccionado : ''
-            }
+            className={props.seleccionado === key ? classes.seleccionado : ''}
           >
             <ListItemText
               primary={props.items[key].nombreCorto}
               secondary={props.items[key].name}
             />
+            <ListItemSecondaryAction onClick={() => console.log('editar')}>
+              <IconButton aria-label="Comments">
+                <EditIcon />
+              </IconButton>
+            </ListItemSecondaryAction>
           </ListItem>
         ))}
       </List>

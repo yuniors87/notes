@@ -3,6 +3,7 @@ import 'typeface-roboto';
 import './App.css';
 import base from '../../Config/base';
 import Empresas from '../Empresas/Empresas';
+import Empresa from '../Empresas/Empresa';
 import Sistemas from '../Sistemas/Sistemas';
 
 class App extends Component {
@@ -59,6 +60,7 @@ class App extends Component {
           click={this.seleccionarSistema}
           seleccionado={this.state.sistemaSeleccionado}
         />
+        <Empresa/>
       </div>
     );
   }
