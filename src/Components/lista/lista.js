@@ -28,7 +28,10 @@ const styles = theme => ({
     height: '100%'
   },
   seleccionado: {
-    background: utils.listaItemSeleccionadoBackground
+    background: utils.listaItemSeleccionadoBackground,
+    '&:hover': {
+      background: utils.listaItemSeleccionadoBackground
+    }
   },
   button: {
     margin: theme.spacing.unit
@@ -46,7 +49,7 @@ const Lista = props => {
           <ListSubheader disableSticky={false} className={classes.fondo}>
             {props.titulo}
             <Button
-            mini
+              mini
               variant="fab"
               color="primary"
               aria-label="add"
